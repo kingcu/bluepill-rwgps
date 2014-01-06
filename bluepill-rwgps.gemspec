@@ -5,14 +5,14 @@ $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require "bluepill/version"
 
 Gem::Specification.new do |s|
-  s.name        = "bluepill"
+  s.name        = "bluepill-rwgps"
   s.version     = Bluepill::VERSION.dup
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Arya Asemanfar", "Gary Tsang", "Rohith Ravi"]
-  s.email       = ["entombedvirus@gmail.com"]
-  s.homepage    = "http://github.com/arya/bluepill"
-  s.summary     = %q{A process monitor written in Ruby with stability and minimalism in mind.}
-  s.description = %q{Bluepill keeps your daemons up while taking up as little resources as possible. After all you probably want the resources of your server to be used by whatever daemons you are running rather than the thing that's supposed to make sure they are brought back up, should they die or misbehave.}
+  s.authors     = ["Cullen King", "Arya Asemanfar", "Gary Tsang", "Rohith Ravi"]
+  s.email       = ["cullenk@gmail.com"]
+  s.homepage    = "http://github.com/kingcu/bluepill-rwgps"
+  s.summary     = %q{Fork of bluepill process monitory, reverting back to stable code with no global PID journal.}
+  s.description = %q{The original bluepill process monitor worked well.  In 2013 several changes were introduced that were detrimental to the stability of bluepill, as well as the system running it.  This fork reverts back to the stable/non-destructive code.}
 
   s.add_dependency 'daemons', ['~> 1.1.4']
   s.add_dependency 'state_machine', '~> 1.1.0'
