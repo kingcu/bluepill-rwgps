@@ -90,20 +90,20 @@ module Bluepill
         if !pid || !System.pid_alive?(pid)
           pid_file = File.join(self.pids_dir, "#{app}.pid")
           sock_file = File.join(self.sockets_dir, "#{app}.sock")
-          File.unlink(pid_file) if File.exists?(pid_file)
-          File.unlink(sock_file) if File.exists?(sock_file)
+          File.unlink(pid_file) if File.exist?(pid_file)
+          File.unlink(sock_file) if File.exist?(sock_file)
         end
       end
     end
 
     def pid_for(app)
       pid_file = File.join(self.pids_dir, "#{app}.pid")
-      File.exists?(pid_file) && File.read(pid_file).to_i
+      File.exist?(pid_file) && File.read(pid_file).to_i
     end
 
     def setup_dir_structure
       [@sockets_dir, @pids_dir].each do |dir|
-        FileUtils.mkdir_p(dir) unless File.exists?(dir)
+        FileUtils.mkdir_p(dir) unless File.exist?(dir)
       end
     end
 

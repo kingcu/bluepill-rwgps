@@ -397,7 +397,7 @@ module Bluepill
       return @actual_pid if cache_actual_pid? && @actual_pid
       @actual_pid = begin
         if pid_file
-          if File.exists?(pid_file)
+          if File.exist?(pid_file)
             str = File.read(pid_file)
             str.to_i if str.size > 0
           else
@@ -422,7 +422,7 @@ module Bluepill
     end
 
     def unlink_pid
-      File.unlink(pid_file) if pid_file && File.exists?(pid_file)
+      File.unlink(pid_file) if pid_file && File.exist?(pid_file)
     rescue Errno::ENOENT
     end
 

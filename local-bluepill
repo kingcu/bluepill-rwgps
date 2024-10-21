@@ -110,7 +110,7 @@ options[:command] = ARGV.shift
 
 if options[:command] == "load"
   file = ARGV.shift
-  if File.exists?(file)
+  if File.exist?(file)
     # Restart the ruby interpreter for the config file so that anything loaded here
     # does not stay in memory for the daemon
     ruby = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name'])

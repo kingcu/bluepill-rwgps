@@ -147,7 +147,7 @@ module Bluepill
 
     def cleanup
       File.unlink(self.socket.path) if self.socket
-      File.unlink(self.pid_file) if File.exists?(self.pid_file)
+      File.unlink(self.pid_file) if File.exist?(self.pid_file)
     end
 
     def setup_signal_traps
@@ -165,14 +165,14 @@ module Bluepill
     end
 
     def setup_pids_dir
-      FileUtils.mkdir_p(self.pids_dir) unless File.exists?(self.pids_dir)
+      FileUtils.mkdir_p(self.pids_dir) unless File.exist?(self.pids_dir)
       # we need everybody to be able to write to the pids_dir as processes managed by
       # bluepill will be writing to this dir after they've dropped privileges
       FileUtils.chmod(0777, self.pids_dir)
     end
 
     def kill_previous_bluepill
-      if File.exists?(self.pid_file)
+      if File.exist?(self.pid_file)
         previous_pid = File.read(self.pid_file).to_i
         if System.pid_alive?(previous_pid)
           begin
